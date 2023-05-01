@@ -1,0 +1,43 @@
+.registerTitle {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.progressContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+
+  .progressGroup {
+    display: flex;
+    align-items: center;
+
+    .progressIcon {
+      position: relative;
+      height: 24px;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  .progressLabel {
+    margin-left: 8px;
+  }
+
+  .progressBar {
+    flex: 1;
+    height: 1px;
+    margin: 0 32px;
+    background-color: #000000;
+  }
+}

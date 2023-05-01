@@ -1,0 +1,19 @@
+// --- varaible
+$screen-break-point: 749.5px;
+// --- Style
+section.formContainer {
+  margin-top: 64px;
+}
+
+section.formBody {
+  .col {
+    justify-content: space-between;
+  }
+}
+// --- RWD
+// - Progress
+@media screen and (max-width: $screen-break-point) {
+  section.formContainer {
+    margin-top: 24px;
+  }
+}

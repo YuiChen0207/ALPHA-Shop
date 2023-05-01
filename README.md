@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-=======
 #  ALPHA Shop
-
-
-## Screenshot - 畫面截圖
-![screenshot](image.png)
-
 
 ## About - 介紹
 這是一個練習使用 react框架及scss製作的表單及購物資訊
@@ -49,4 +42,3 @@ server live on http://localhost:3000
 ```
 
 6.打開瀏覽器輸入http://localhost:3000 來使用本專案
->>>>>>> 0a854d7 (complete the part of step progress, step1 form and progress control)

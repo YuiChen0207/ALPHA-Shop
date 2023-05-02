@@ -13,7 +13,7 @@ const FormContainerAddress = () => {
             <div className={styles.inputLabel}>稱謂</div>
             <div className={styles.selectContainer}>
               <select className={`${styles.input}`}>
-                <option value="mr" selected="">
+                <option value="mr" defaultValue>
                   先生
                 </option>
                 <option value="ms">女士</option>
@@ -55,7 +55,7 @@ const FormContainerAddress = () => {
             <div className={styles.inputLabel}>縣市</div>
             <div className={styles.selectContainer}>
               <select className={styles.input} required>
-                <option value="" selected disabled>
+                <option value="" defaultValue disabled>
                   請選擇縣市
                 </option>
                 <option value="KLU">基隆市</option>

@@ -1,7 +1,7 @@
-import { ReactComponent as MinusIcon } from "../../../assets/minus.svg";
-import { ReactComponent as PlusIcon } from "../../..//assets/plus.svg";
-import product1Image from "../../../assets/images/product-1.jpg";
-import product2Image from "../../../assets/images/product-2.jpg";
+import { ReactComponent as MinusIcon } from "assets/minus.svg";
+import { ReactComponent as PlusIcon } from "assets/plus.svg";
+import product1Image from "assets/images/product-1.jpg";
+import product2Image from "assets/images/product-2.jpg";
 
 const CartContainer = () => {
   return (

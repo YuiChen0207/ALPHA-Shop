@@ -1,7 +1,7 @@
-import { ReactComponent as LogoIcon } from "../../assets/logo.svg";
-import { ReactComponent as InstagramIcon } from "../../assets/instagram.svg";
-import { ReactComponent as FacebookIcon } from "../../assets/facebook.svg";
-import { ReactComponent as WhatsappIcon } from "../../assets/whatsapp.svg";
+import { ReactComponent as LogoIcon } from "assets/logo.svg";
+import { ReactComponent as InstagramIcon } from "assets/instagram.svg";
+import { ReactComponent as FacebookIcon } from "assets/facebook.svg";
+import { ReactComponent as WhatsappIcon } from "assets/whatsapp.svg";
 import styles from "../footer/footer.module.scss";
 
 const FooterSection = ({ sectionTitle, children }) => {

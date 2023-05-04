@@ -1,5 +1,5 @@
-import { ReactComponent as StepUnDone } from "../../../../assets/stepUndone.svg";
-import styles from "../../../main/register/progress/progress.module.scss";
+import { ReactComponent as StepUnDone } from "assets/icons/stepUndone.svg";
+import styles from "components/main/register/progress/progress.module.scss";
 
 const ProgressGroupAndBar = ({ dataPhase, progressLabel, text }) => {
   return (

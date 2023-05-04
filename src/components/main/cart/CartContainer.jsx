@@ -1,67 +1,50 @@
-import { ReactComponent as MinusIcon } from "assets/minus.svg";
-import { ReactComponent as PlusIcon } from "assets/plus.svg";
-import product1Image from "assets/images/product-1.jpg";
-import product2Image from "assets/images/product-2.jpg";
+import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
+import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
+import styles from "./cart.module.scss";
+import cartData from "./data/cartData.js";
 
 const CartContainer = () => {
   return (
-    <section className="cart-container col col-lg-5 col-sm-12">
-      <h3 className="cart-title">購物籃</h3>
-
-      <section className="product-list col col-12" data-total-price="0">
-        <div
-          className="product-container col col-12"
-          data-count="0"
-          data-price="3999"
-        >
-          <img
-            className="img-container"
-            src={product1Image}
-            alt="cloth-product"
-          />
-          <div className="product-info">
-            <div className="product-name">破壞補丁修身牛仔褲</div>
-            <div className="product-control-container">
-              <div className="product-control">
-                <MinusIcon />
-                <span className="product-count">0</span>
-                <PlusIcon />
+    <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
+      <h3 className={styles.cartTitle}>購物籃</h3>
+      <section
+        className={`${styles.productList} col col-12`}
+        data-total-price="0"
+      >
+        {cartData.map((data) => (
+          <div
+            key={data.id}
+            className={`${styles.productContainer} col col-12`}
+            data-count={data.quantity}
+            data-price={data.price}
+          >
+            <img
+              className={styles.imgContainer}
+              src={data.img}
+              alt="cloth-product"
+            />
+            <div className={styles.productInfo}>
+              <div className={styles.productName}>{data.name}</div>
+              <div className={styles.productControlContainer}>
+                <div className={styles.productControl}>
+                  <MinusIcon />
+                  <span className={styles.productCount}>{data.quantity}</span>
+                  <PlusIcon />
+                </div>
               </div>
+              <div className={styles.price}>{data.price}</div>
             </div>
-            <div className="price">$3,999</div>
           </div>
-        </div>
-        <div
-          className="product-container col col-12"
-          data-count="0"
-          data-price="1299"
-        >
-          <img
-            className="img-container"
-            src={product2Image}
-            alt="cloth-product"
-          />
-          <div className="product-info">
-            <div className="product-name">刷色直筒牛仔褲</div>
-            <div className="product-control-container">
-              <div className="product-control">
-                <MinusIcon />
-                <span className="product-count">0</span>
-                <PlusIcon />
-              </div>
-            </div>
-            <div className="price">$1,299</div>
-          </div>
-        </div>
+        ))}
       </section>
 
-      <section className="cart-info shipping col col-12">
-        <div className="text">運費</div>
-        <div className="price">免費</div>
+      <section className={`${styles.cartInfo} shipping col col-12`}>
+        <div className={styles.text}>運費</div>
+        <div className={styles.price}>免費</div>
       </section>
-      <section className="cart-info total col col-12">
-        <div className="text">小計</div>
-        <div className="price">$0</div>
+      <section className={`${styles.cartInfo} total col col-12`}>
+        <div className={styles.text}>小計</div>
+        <div className={styles.price}>$0</div>
       </section>
     </section>
   );

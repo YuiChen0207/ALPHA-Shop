@@ -1,9 +1,9 @@
-import { ReactComponent as ToggleIcon } from "assets/toggle.svg";
-import { ReactComponent as SearchIcon } from "assets/search.svg";
-import { ReactComponent as CartIcon } from "assets/cart.svg";
-import { ReactComponent as MoonIcon } from "assets/moon.svg";
-import { ReactComponent as SunIcon } from "assets/sun.svg";
-import { ReactComponent as LogoIcon } from "assets/logo.svg";
+import { ReactComponent as ToggleIcon } from "assets/icons/toggle.svg";
+import { ReactComponent as SearchIcon } from "assets/icons/search.svg";
+import { ReactComponent as CartIcon } from "assets/icons/cart.svg";
+import { ReactComponent as MoonIcon } from "assets/icons/moon.svg";
+import { ReactComponent as SunIcon } from "assets/icons/sun.svg";
+import { ReactComponent as LogoIcon } from "assets/icons/logo.svg";
 import styles from "components/header/header.module.scss";
 
 const Header = () => {

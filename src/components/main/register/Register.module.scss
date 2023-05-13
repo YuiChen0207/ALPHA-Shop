@@ -1,8 +1,117 @@
-section.registerContainer {
-    h2.registerTitle {
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 38px;
-        color: var(--main-text);
-    }
+$screen-break-point: 749.5px;
+
+%done-phase {
+  .icon {
+    display: inline-block;
+  }
+  .text {
+    display: none;
+  }
 }
+
+%undone-phase {
+  .icon {
+    display: none;
+  }
+  .text {
+    display: inline-block;
+  }
+}
+%current-text {
+  color: var(--progress-current-color);
+}
+%current-icon {
+  @extend %current-text;
+  background-color: transparent;
+  border: 1px solid var(--progress-current-color);
+  @extend %undone-phase;
+}
+%undone-text {
+  color: var(--progress-undone-color);
+}
+%undone-icon {
+  @extend %undone-text;
+  background-color: transparent;
+  border: 1px solid var(--progress-undone-color);
+  @extend %undone-phase;
+}
+%done-text {
+  @extend %current-text;
+}
+%done-icon {
+  color: var(--progress-done-color);
+  background-color: transparent;
+  @extend %done-phase;
+}
+
+section.registerContainer {
+  h2.registerTitle {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: var(--main-text);
+  }
+}
+
+$phase-map: (
+  1: "address",
+  2: "shipping",
+  3: "credit-card",
+);
+@for $index from 1 to 4 {
+  section.registerContainer[data-phase="#{$index}"] {
+    // progress-bar
+    .progressBar {
+      &[data-order="1"] {
+        border-color: var(--done-progress-border);
+      }
+      &[data-order="2"] {
+        @if $index == 1 {
+          border-color: var(--undone-progress-border);
+        } @else {
+          border-color: var(--done-progress-border);
+        }
+      }
+    }
+
+    @each $key, $phase in $phase-map {
+      // progress-group
+      .progressGroup[data-phase="#{$phase}"] {
+        @if $key > $index {
+          .progressIcon {
+            @extend %undone-icon;
+          }
+          .progressLabel {
+            @extend %undone-text;
+          }
+        } @else if $key == $index {
+          .progressIcon {
+            @extend %current-icon;
+          }
+          .progressLabel {
+            @extend %current-text;
+          }
+        } @else {
+          .progressIcon {
+            @extend %done-icon;
+          }
+          .progressLabel {
+            @extend %done-text;
+          }
+        }
+
+        @if $phase == "address" {
+          .progressIcon {
+            background-color: var(--pg-addr-bg-color);
+            border-color: var(--pg-addr-bg-color);
+            .text {
+              color: var(--pg-addr-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

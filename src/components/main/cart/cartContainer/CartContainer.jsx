@@ -1,20 +1,30 @@
 import styles from "./cartContainer.module.scss";
 import cartData from "../data/cartData.js";
 import CartItem from "../cartItem/CartItem";
+import { useEffect, useState } from "react";
 
-const CartContainer = () => {
-  const calculateTotalPrice = () => {
-    let totalPrice = 0;
-    cartData.forEach((data) => {
-      totalPrice += data.price * data.quantity;
-    });
-    return totalPrice;
-  };
+const CartContainer = ({ onShippingPrice }) => {
+  const [itemsPrice, setItemsPrice] = useState(0);
+  const [shippingPrice, setShippingPrice] = useState(onShippingPrice);
 
-  const calculateShippingFee = () => {
-    const totalPrice = calculateTotalPrice();
-    return totalPrice >= 1000 ? "免費" : "$50";
-  };
+  useEffect(() => {
+    let itemsPrice = 0;
+    itemsPrice = cartData.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setItemsPrice(itemsPrice);
+  }, []);
+
+  useEffect(() => {
+    setShippingPrice(onShippingPrice);
+  }, [onShippingPrice]);
+
+  const totalPrice = itemsPrice + shippingPrice;
+
+  function recalculateTotal(price) {
+    setItemsPrice(itemsPrice + price);
+  }
 
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
@@ -24,17 +34,21 @@ const CartContainer = () => {
         data-total-price="0"
       >
         {cartData.map((data) => (
-          <CartItem key={data.id} {...data} />
+          <CartItem
+            key={data.id}
+            {...data}
+            recalculateTotal={recalculateTotal}
+          />
         ))}
       </section>
 
       <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>
-        <div className={styles.price}>{calculateShippingFee()}</div>
+        <div className={styles.price}>{onShippingPrice}</div>
       </section>
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price}>${calculateTotalPrice()}</div>
+        <div className={styles.price}>${totalPrice.toLocaleString()}</div>
       </section>
     </section>
   );

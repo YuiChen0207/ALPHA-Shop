@@ -44,13 +44,11 @@ $screen-break-point: 749.5px;
   @extend %done-phase;
 }
 
-section.registerContainer {
-  h2.registerTitle {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
-    color: var(--main-text);
-  }
+h2.registerTitle {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: var(--main-text);
 }
 
 $phase-map: (
@@ -113,5 +111,3 @@ $phase-map: (
     }
   }
 }
-
-

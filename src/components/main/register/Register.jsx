@@ -2,14 +2,20 @@ import ProgressContainer from "./progress/ProgressContainer";
 import FormContainer from "./form/FormContainer";
 import styles from "./Register.module.scss";
 
-const Register = ({ onStep }) => {
+const Register = ({ onStep, onShippingPrice, onHandleClick }) => {
   return (
     <section
-      className={`${styles.registerContainer} col col-lg-6 col-sm-12`} data-phase={onStep} data-total-price="0"
+      className={`${styles.registerContainer} col col-lg-6 col-sm-12`}
+      data-phase={onStep}
+      data-total-price="0"
     >
       <h2 className={`${styles.registerTitle} col col-12`}>結帳</h2>
       <ProgressContainer onStep={onStep} />
-      <FormContainer onStep={onStep} />
+      <FormContainer
+        onStep={onStep}
+        onShippingPrice={onShippingPrice}
+        onHandleClick={onHandleClick}
+      />
     </section>
   );
 };

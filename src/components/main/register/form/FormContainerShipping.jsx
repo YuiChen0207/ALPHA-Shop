@@ -1,6 +1,6 @@
 import styles from "./formContainerShipping.module.scss";
 
-const FormContainerShipping = () => {
+const FormContainerShipping = ({ onHandleClick }) => {
   return (
     <form className="col col-12" data-phase="shipping">
       <h3 className={styles.formTitle}>運送方式</h3>
@@ -10,6 +10,8 @@ const FormContainerShipping = () => {
             id={styles.shippingStandard}
             type="radio"
             name="shipping"
+            onClick={onHandleClick}
+            data-price="0"
             checked
           />
           <div className={styles.radioInfo}>
@@ -22,7 +24,13 @@ const FormContainerShipping = () => {
           <div className={styles.radioBoxBorder}></div>
         </label>
         <label className={`${styles.radioGroup} col col-12`} data-price="500">
-          <input id={styles.shippingDhl} type="radio" name="shipping" />
+          <input
+            id={styles.shippingDhl}
+            type="radio"
+            name="shipping"
+            onClick={onHandleClick}
+            data-price="500"
+          />
           <div className={styles.radioInfo}>
             <div className={`${styles.col} ${styles.space} col col-12`}>
               <div className={styles.text}>DHL 貨運</div>

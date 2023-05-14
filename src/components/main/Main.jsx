@@ -2,8 +2,15 @@ import Register from "./register/Register";
 import CartContainer from "./cart/cartContainer/CartContainer";
 import ProgressControlContainer from "./progressControl/ProgressControlContainer";
 import styles from "components/main/main.module.scss";
+import { useState } from "react";
 
 const Main = ({ step, setStep }) => {
+  const [shippingPrice, setShippingPrice] = useState(0);
+
+  const handleClick = (e) => {
+    setShippingPrice(parseInt(e.currentTarget.dataset.price));
+  };
+
   const handleNextStep = () => {
     if (step < 3) {
       setStep(step + 1);
@@ -18,8 +25,15 @@ const Main = ({ step, setStep }) => {
   return (
     <main className={styles.siteMain}>
       <div className={styles.mainContainer}>
-        <Register onStep={step} />
-        <CartContainer />
+        <Register
+          onStep={step}
+          onShippingPrice={shippingPrice}
+          onHandleClick={handleClick}
+        />
+        <CartContainer
+          onShippingPrice={shippingPrice}
+          onHandleClick={handleClick}
+        />
         <ProgressControlContainer
           onStep={step}
           onChangeNextStep={handleNextStep}

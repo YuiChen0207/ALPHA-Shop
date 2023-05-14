@@ -26,7 +26,7 @@ const Main = ({ step, setStep }) => {
     <main className={styles.siteMain}>
       <div className={styles.mainContainer}>
         <Register
-          onStep={step}
+          step={step}
           onShippingPrice={shippingPrice}
           onHandleClick={handleClick}
         />
@@ -35,7 +35,7 @@ const Main = ({ step, setStep }) => {
           onHandleClick={handleClick}
         />
         <ProgressControlContainer
-          onStep={step}
+          step={step}
           onChangeNextStep={handleNextStep}
           onChangePrevStep={handlePrevStep}
         />

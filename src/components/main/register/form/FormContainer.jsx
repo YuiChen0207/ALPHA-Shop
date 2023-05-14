@@ -3,17 +3,17 @@ import FormContainerShipping from "./FormContainerShipping";
 import FormContainerCreditCard from "./FormContainerCreditCard";
 import styles from "./form.module.scss";
 
-const FormContainer = ({ onStep, onShippingPrice, onHandleClick }) => {
+const FormContainer = ({ step, onShippingPrice, onHandleClick }) => {
   return (
     <section className={`${styles.formContainer} col col-12`}>
-      {onStep === 1 && <FormContainerAddress />}
-      {onStep === 2 && (
+      {step === 1 && <FormContainerAddress />}
+      {step === 2 && (
         <FormContainerShipping
           onShippingPrice={onShippingPrice}
           onHandleClick={onHandleClick}
         />
       )}
-      {onStep === 3 && <FormContainerCreditCard />}
+      {step === 3 && <FormContainerCreditCard />}
     </section>
   );
 };

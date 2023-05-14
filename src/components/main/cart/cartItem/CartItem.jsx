@@ -8,7 +8,7 @@ const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
 
   const handlePlusClick = () => {
     setCount(count + 1);
-    recalculateTotal(price)
+    recalculateTotal(price);
   };
 
   const handleMinusClick = () => {
@@ -17,6 +17,8 @@ const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
       recalculateTotal(-price);
     }
   };
+
+  const totalPrice = count * price;
   return (
     <div
       className={`${styles.productContainer} col col-12`}
@@ -33,7 +35,7 @@ const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
             <PlusIcon onClick={handlePlusClick} />
           </div>
         </div>
-        <div className={styles.price}>${price * count}</div>
+        <div className={styles.price}>${totalPrice}</div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { ReactComponent as LeftArrow } from "assets/icons/left-arrow.svg";
 import styles from "./ProgressControl.module.scss";
 
 const ProgressControlContainer = ({
-  onStep,
+  step,
   onChangeNextStep,
   onChangePrevStep,
 }) => {
@@ -11,7 +11,7 @@ const ProgressControlContainer = ({
     <section
       className={`${styles.progressControlContainer} col col-lg-6 col-sm-12`}
     >
-      {onStep === 1 && (
+      {step === 1 && (
         <section
           className={`${styles.buttonGroup} col col-12`}
           data-phase="address"
@@ -22,7 +22,7 @@ const ProgressControlContainer = ({
           </button>
         </section>
       )}
-      {onStep === 2 && (
+      {step === 2 && (
         <section
           className={`${styles.buttonGroup} col col-12`}
           data-phase="shipping"
@@ -37,7 +37,7 @@ const ProgressControlContainer = ({
           </button>
         </section>
       )}
-      {onStep === 3 && (
+      {step === 3 && (
         <section
           className={`${styles.buttonGroup} col col-12`}
           data-phase="credit-card"

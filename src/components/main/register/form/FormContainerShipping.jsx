@@ -1,6 +1,6 @@
 import styles from "./formContainerShipping.module.scss";
 
-const FormContainerShipping = ({ onHandleClick }) => {
+const FormContainerShipping = ({ onHandleShippingPrice }) => {
   return (
     <form className="col col-12" data-phase="shipping">
       <h3 className={styles.formTitle}>運送方式</h3>
@@ -10,7 +10,7 @@ const FormContainerShipping = ({ onHandleClick }) => {
             id={styles.shippingStandard}
             type="radio"
             name="shipping"
-            onClick={onHandleClick}
+            onClick={onHandleShippingPrice}
             data-price="0"
             checked
           />
@@ -28,7 +28,7 @@ const FormContainerShipping = ({ onHandleClick }) => {
             id={styles.shippingDhl}
             type="radio"
             name="shipping"
-            onClick={onHandleClick}
+            onClick={onHandleShippingPrice}
             data-price="500"
           />
           <div className={styles.radioInfo}>

@@ -3,9 +3,10 @@ import cartData from "../data/cartData.js";
 import CartItem from "../cartItem/CartItem";
 import { useEffect, useState } from "react";
 
-const CartContainer = ({ onShippingPrice }) => {
+const CartContainer = ({ shippingPrice }) => {
   const [itemsPrice, setItemsPrice] = useState(0);
-  const [shippingPrice, setShippingPrice] = useState(onShippingPrice);
+  const [recalculateShippingPrice, setRecalculateShippingPrice] =
+    useState(shippingPrice);
 
   useEffect(() => {
     let itemsPrice = 0;
@@ -17,10 +18,10 @@ const CartContainer = ({ onShippingPrice }) => {
   }, []);
 
   useEffect(() => {
-    setShippingPrice(onShippingPrice);
-  }, [onShippingPrice]);
+    setRecalculateShippingPrice(shippingPrice);
+  }, [shippingPrice]);
 
-  const totalPrice = itemsPrice + shippingPrice;
+  const totalPrice = itemsPrice + recalculateShippingPrice;
 
   function recalculateTotal(price) {
     setItemsPrice(itemsPrice + price);
@@ -44,11 +45,11 @@ const CartContainer = ({ onShippingPrice }) => {
 
       <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>
-        <div className={styles.price}>{onShippingPrice}</div>
+        <div className={styles.price}>{shippingPrice}</div>
       </section>
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price}>${totalPrice.toLocaleString()}</div>
+        <div className={styles.price}>${totalPrice}</div>
       </section>
     </section>
   );

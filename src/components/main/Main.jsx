@@ -4,10 +4,11 @@ import ProgressControlContainer from "./progressControl/ProgressControlContainer
 import styles from "components/main/main.module.scss";
 import { useState } from "react";
 
-const Main = ({ step, setStep }) => {
+const Main = () => {
+  const [step, setStep] = useState(1);
   const [shippingPrice, setShippingPrice] = useState(0);
 
-  const handleClick = (e) => {
+  const handleShippingPrice = (e) => {
     setShippingPrice(parseInt(e.currentTarget.dataset.price));
   };
 
@@ -25,19 +26,12 @@ const Main = ({ step, setStep }) => {
   return (
     <main className={styles.siteMain}>
       <div className={styles.mainContainer}>
-        <Register
-          step={step}
-          onShippingPrice={shippingPrice}
-          onHandleClick={handleClick}
-        />
-        <CartContainer
-          onShippingPrice={shippingPrice}
-          onHandleClick={handleClick}
-        />
+        <Register step={step} onHandleShippingPrice={handleShippingPrice} />
+        <CartContainer shippingPrice={shippingPrice} />
         <ProgressControlContainer
           step={step}
-          onChangeNextStep={handleNextStep}
-          onChangePrevStep={handlePrevStep}
+          onHandleNextStep={handleNextStep}
+          onHandlePrevStep={handlePrevStep}
         />
       </div>
     </main>

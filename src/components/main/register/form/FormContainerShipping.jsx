@@ -23,7 +23,7 @@ const FormContainerShipping = ({ onHandleShippingPrice }) => {
     >
       <h3 className={styles.formTitle}>運送方式</h3>
       <section className={`col col-12 ${styles.formBody}`}>
-        {shippingOptions.map(({ id, name, price, period }) => (
+        {shippingOptions.map(({ id, name, price, period }, index) => (
           <label
             key={id}
             className={`col col-12 ${styles.radioGroup}`}
@@ -35,6 +35,7 @@ const FormContainerShipping = ({ onHandleShippingPrice }) => {
               name="shipping"
               onClick={onHandleShippingPrice}
               data-price={price}
+              defaultChecked={index === 0}
             />
             <div className={styles.radioInfo}>
               <div className={`${styles.col} ${styles.space} col col-12`}>

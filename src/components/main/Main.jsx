@@ -12,17 +12,12 @@ const Main = () => {
     setShippingPrice(parseInt(e.currentTarget.dataset.price));
   };
 
-  const handleNextStep = () => {
-    if (step < 3) {
-      setStep(step + 1);
+  const handleStep = (step) => {
+    if (step < 4) {
+      setStep(step);
     }
   };
 
-  const handlePrevStep = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
   return (
     <main className={styles.siteMain}>
       <div className={styles.mainContainer}>
@@ -30,8 +25,8 @@ const Main = () => {
         <CartContainer shippingPrice={shippingPrice} />
         <ProgressControlContainer
           step={step}
-          onHandleNextStep={handleNextStep}
-          onHandlePrevStep={handlePrevStep}
+          onHandleNextStep={() => handleStep(step + 1)}
+          onHandlePrevStep={() => handleStep(step - 1)}
         />
       </div>
     </main>

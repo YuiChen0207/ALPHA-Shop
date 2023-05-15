@@ -24,7 +24,7 @@ const CartContainer = ({ shippingPrice }) => {
   const totalPrice = itemsPrice + recalculateShippingPrice;
 
   function recalculateTotal(price) {
-    setItemsPrice(itemsPrice + price);
+    setItemsPrice((prevItemsPrice) => prevItemsPrice + price);
   }
 
   return (

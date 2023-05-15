@@ -1,45 +1,53 @@
 import styles from "./formContainerShipping.module.scss";
 
+const shippingOptions = [
+  {
+    id: "shippingStandard",
+    name: "標準運送",
+    price: 0,
+    period: "約 3~7 個工作天",
+  },
+  {
+    id: "shippingDhl",
+    name: "DHL 貨運",
+    price: 500,
+    period: "48 小時內送達",
+  },
+];
+
 const FormContainerShipping = ({ onHandleShippingPrice }) => {
   return (
-    <form className="col col-12" data-phase="shipping">
+    <form
+      className={`col col-12 ${styles.formContainer}`}
+      data-phase="shipping"
+    >
       <h3 className={styles.formTitle}>運送方式</h3>
-      <section className={`${styles.formBody} col col-12`}>
-        <label className={`${styles.radioGroup} col col-12`} data-price="0">
-          <input
-            id={styles.shippingStandard}
-            type="radio"
-            name="shipping"
-            onClick={onHandleShippingPrice}
-            data-price="0"
-            checked
-          />
-          <div className={styles.radioInfo}>
-            <div className={`${styles.col} ${styles.space} col col-12`}>
-              <div className={styles.text}>標準運送</div>
-              <div className={styles.price}>免費</div>
+      <section className={`col col-12 ${styles.formBody}`}>
+        {shippingOptions.map(({ id, name, price, period }) => (
+          <label
+            key={id}
+            className={`col col-12 ${styles.radioGroup}`}
+            data-price={price}
+          >
+            <input
+              id={id}
+              type="radio"
+              name="shipping"
+              onClick={onHandleShippingPrice}
+              data-price={price}
+            />
+            <div className={styles.radioInfo}>
+              <div className={`${styles.col} ${styles.space} col col-12`}>
+                <div className={styles.text}>{name}</div>
+                <div className={styles.price}>
+                  {price === 0 ? "免費" : `$${price}`}
+                </div>
+              </div>
+              <div className={`${styles.period} col col-12`}>{period}</div>
             </div>
-            <div className={`${styles.period} col col-12`}>約 3~7 個工作天</div>
-          </div>
-          <div className={styles.radioBoxBorder}></div>
-        </label>
-        <label className={`${styles.radioGroup} col col-12`} data-price="500">
-          <input
-            id={styles.shippingDhl}
-            type="radio"
-            name="shipping"
-            onClick={onHandleShippingPrice}
-            data-price="500"
-          />
-          <div className={styles.radioInfo}>
-            <div className={`${styles.col} ${styles.space} col col-12`}>
-              <div className={styles.text}>DHL 貨運</div>
-              <div className={styles.price}>$500</div>
-            </div>
-            <div className={`${styles.period} col col-12`}>48 小時內送達</div>
-          </div>
-          <div className={styles.radioBoxBorder}></div>
-        </label>
+            <div className={styles.radioBoxBorder}></div>
+          </label>
+        ))}
       </section>
     </form>
   );

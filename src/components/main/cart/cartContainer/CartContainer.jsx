@@ -1,20 +1,18 @@
 import styles from "./cartContainer.module.scss";
-import cartData from "../data/cartData.js";
 import CartItem from "../cartItem/CartItem";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../CartContext";
 
 const CartContainer = ({ shippingPrice }) => {
   const [itemsPrice, setItemsPrice] = useState(0);
   const [recalculateShippingPrice, setRecalculateShippingPrice] =
     useState(shippingPrice);
+  const cartData = useContext(CartContext);
 
   useEffect(() => {
-    let itemsPrice = 0;
-    itemsPrice = cartData.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
+    setItemsPrice(
+      cartData.reduce((total, item) => total + item.price * item.quantity, 0)
     );
-    setItemsPrice(itemsPrice);
   }, []);
 
   useEffect(() => {

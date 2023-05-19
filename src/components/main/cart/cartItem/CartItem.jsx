@@ -18,7 +18,6 @@ const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
     }
   };
 
-  const totalPrice = count * price;
   return (
     <div
       className={`${styles.productContainer} col col-12`}
@@ -35,7 +34,7 @@ const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
             <PlusIcon onClick={handlePlusClick} />
           </div>
         </div>
-        <div className={styles.price}>${totalPrice}</div>
+        <div className={styles.price}>${price}</div>
       </div>
     </div>
   );

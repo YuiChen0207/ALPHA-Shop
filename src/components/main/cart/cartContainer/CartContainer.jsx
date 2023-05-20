@@ -1,7 +1,7 @@
 import styles from "./cartContainer.module.scss";
 import CartItem from "../cartItem/CartItem";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext, PaymentContext } from "../CartContext";
 
 const CartContainer = ({ shippingPrice }) => {
   const [itemsPrice, setItemsPrice] = useState(0);
@@ -9,11 +9,14 @@ const CartContainer = ({ shippingPrice }) => {
     useState(shippingPrice);
   const cartData = useContext(CartContext);
 
+  const { orderConfirmed, paymentData } = useContext(PaymentContext);
+  const {  name, cardNumber, expiration, cvv } = paymentData;
+
   useEffect(() => {
     setItemsPrice(
       cartData.reduce((total, item) => total + item.price * item.quantity, 0)
     );
-  }, []);
+  }, [cartData]);
 
   useEffect(() => {
     setRecalculateShippingPrice(shippingPrice);
@@ -24,6 +27,16 @@ const CartContainer = ({ shippingPrice }) => {
   function recalculateTotal(price) {
     setItemsPrice((prevItemsPrice) => prevItemsPrice + price);
   }
+
+  useEffect(() => {
+    if (paymentData && orderConfirmed) {
+      console.log("Total Price:", totalPrice);
+      console.log("Name:", name);
+      console.log("Card Number:", cardNumber);
+      console.log("Expiration:", expiration);
+      console.log("CVV:", cvv);
+    }
+  }, [orderConfirmed]);
 
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>

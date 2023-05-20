@@ -1,12 +1,18 @@
 import { ReactComponent as RightArrow } from "assets/icons/right-arrow.svg";
 import { ReactComponent as LeftArrow } from "assets/icons/left-arrow.svg";
 import styles from "./ProgressControl.module.scss";
+import { useContext } from "react";
+import { PaymentContext } from "../cart/CartContext";
 
 const ProgressControlContainer = ({
   step,
   onHandleNextStep,
   onHandlePrevStep,
 }) => {
+  const { paymentData, setPaymentData, setOrderConfirmed } =
+    useContext(PaymentContext);
+  const { name, cardNumber, expiration, cvv } = paymentData;
+
   const prevButton = step > 1 && (
     <button className={styles.prev} onClick={onHandlePrevStep}>
       <LeftArrow className={styles.svg} />
@@ -21,7 +27,22 @@ const ProgressControlContainer = ({
         <RightArrow className={styles.svg} />
       </button>
     ) : (
-      <button className={styles.next} onClick={onHandleNextStep}>
+      <button
+        className={styles.next}
+        onClick={() => {
+          // 將購物車總金額和持卡人資訊存入 PaymentContext
+          setPaymentData({
+            ...paymentData,
+            name: name,
+            cardNumber: cardNumber,
+            expiration: expiration,
+            cvv: cvv,
+          });
+
+          // 設置 orderConfirmed 為 true
+          setOrderConfirmed(true);
+        }}
+      >
         確認下單
       </button>
     );

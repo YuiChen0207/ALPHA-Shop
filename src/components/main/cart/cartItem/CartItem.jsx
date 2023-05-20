@@ -1,20 +1,24 @@
 import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
 import styles from "./CartItem.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PaymentContext } from "../CartContext";
 
 const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
+  const { setOrderConfirmed } = useContext(PaymentContext);
   const [count, setCount] = useState(quantity);
 
   const handlePlusClick = () => {
     setCount(count + 1);
     recalculateTotal(price);
+    setOrderConfirmed(false);
   };
 
   const handleMinusClick = () => {
     if (count >= 1) {
       setCount(count - 1);
       recalculateTotal(-price);
+      setOrderConfirmed(false);
     }
   };
 

@@ -3,7 +3,11 @@ import CartContainer from "./cart/cartContainer/CartContainer";
 import ProgressControlContainer from "./progressControl/ProgressControlContainer";
 import styles from "components/main/main.module.scss";
 import { useState } from "react";
-import { CartContext, InitialContent } from "./cart/CartContext.js";
+import {
+  CartContext,
+  PaymentContext,
+  paymentData,
+} from "./cart/CartContext.js";
 import cartData from "./cart/data/cartData";
 
 const Main = () => {
@@ -24,9 +28,7 @@ const Main = () => {
     <main className={styles.siteMain}>
       <div className={styles.mainContainer}>
         <Register step={step} onHandleShippingPrice={handleShippingPrice} />
-        <CartContext.Provider value={cartData}>
-          <CartContainer shippingPrice={shippingPrice} />
-        </CartContext.Provider>
+        <CartContainer shippingPrice={shippingPrice} />
         <ProgressControlContainer
           step={step}
           onHandleNextStep={() => handleStep(step + 1)}

@@ -36,7 +36,7 @@ const CartContainer = ({ shippingPrice }) => {
       console.log("Expiration:", expiration);
       console.log("CVV:", cvv);
     }
-  }, [orderConfirmed]);
+  }, [paymentData, orderConfirmed]);
 
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>

@@ -30,16 +30,7 @@ const ProgressControlContainer = ({
       <button
         className={styles.next}
         onClick={() => {
-          // 將購物車總金額和持卡人資訊存入 PaymentContext
-          setPaymentData({
-            ...paymentData,
-            name: name,
-            cardNumber: cardNumber,
-            expiration: expiration,
-            cvv: cvv,
-          });
-
-          // 設置 orderConfirmed 為 true
+          setPaymentData(paymentData);
           setOrderConfirmed(true);
         }}
       >

@@ -60,7 +60,7 @@ const CartContainer = ({ shippingPrice }) => {
       </section>
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price}>${totalPrice}</div>
+        <div className={styles.price}>${totalPrice.toLocaleString()}</div>
       </section>
     </section>
   );

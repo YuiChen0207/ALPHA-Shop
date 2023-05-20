@@ -2,7 +2,7 @@ import { ReactComponent as RightArrow } from "assets/icons/right-arrow.svg";
 import { ReactComponent as LeftArrow } from "assets/icons/left-arrow.svg";
 import styles from "./ProgressControl.module.scss";
 import { useContext } from "react";
-import { PaymentContext } from "../cart/CartContext";
+import { PaymentContext } from "../../../context/CartAndPaymentContext";
 
 const ProgressControlContainer = ({
   step,

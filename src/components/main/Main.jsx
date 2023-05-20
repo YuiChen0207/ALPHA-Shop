@@ -3,19 +3,13 @@ import CartContainer from "./cart/cartContainer/CartContainer";
 import ProgressControlContainer from "./progressControl/ProgressControlContainer";
 import styles from "components/main/main.module.scss";
 import { useState } from "react";
-import {
-  CartContext,
-  PaymentContext,
-  paymentData,
-} from "./cart/CartContext.js";
-import cartData from "./cart/data/cartData";
 
 const Main = () => {
   const [step, setStep] = useState(1);
   const [shippingPrice, setShippingPrice] = useState(0);
 
-  const handleShippingPrice = (e) => {
-    setShippingPrice(parseInt(e.currentTarget.dataset.price));
+  const handleShippingPrice = (price) => {
+    setShippingPrice(parseInt(price));
   };
 
   const handleStep = (step) => {

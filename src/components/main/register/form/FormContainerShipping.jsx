@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "./formContainerShipping.module.scss";
 
 const shippingOptions = [
@@ -16,6 +17,24 @@ const shippingOptions = [
 ];
 
 const FormContainerShipping = ({ onHandleShippingPrice }) => {
+  const [selectedOption, setSelectedOption] = useState(shippingOptions[0].id);
+
+  useEffect(() => {
+    const storedOption = localStorage.getItem("selectedShippingOption");
+    if (storedOption) {
+      setSelectedOption(storedOption);
+    }
+  }, []);
+
+  const handleOptionChange = (event) => {
+    const selectedId = event.target.value;
+    setSelectedOption(selectedId);
+    localStorage.setItem("selectedShippingOption", selectedId);
+    const selectedPrice = shippingOptions.find(
+      (option) => option.id === selectedId
+    )?.price;
+    onHandleShippingPrice(selectedPrice);
+  };
   return (
     <form
       className={`col col-12 ${styles.formContainer}`}
@@ -33,9 +52,9 @@ const FormContainerShipping = ({ onHandleShippingPrice }) => {
               id={id}
               type="radio"
               name="shipping"
-              onClick={onHandleShippingPrice}
-              data-price={price}
-              defaultChecked={index === 0}
+              onChange={handleOptionChange}
+              value={id}
+              checked={selectedOption === id}
             />
             <div className={styles.radioInfo}>
               <div className={`${styles.col} ${styles.space} col col-12`}>

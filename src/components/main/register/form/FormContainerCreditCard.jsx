@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./FormContainerCreditCard.module.scss";
-import { PaymentContext } from "components/main/cart/CartContext";
+import { PaymentContext } from "context/CartAndPaymentContext";
 
 const CreditCardInput = ({
   label,

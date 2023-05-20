@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import cartData from "./data/cartData";
+import cartData from "../components/main/cart/data/cartData";
 
 export const CartContext = createContext();
 export const PaymentContext = createContext();

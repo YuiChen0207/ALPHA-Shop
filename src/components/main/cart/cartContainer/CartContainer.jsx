@@ -1,7 +1,10 @@
 import styles from "./cartContainer.module.scss";
 import CartItem from "../cartItem/CartItem";
 import { useContext, useEffect, useState } from "react";
-import { CartContext, PaymentContext } from "../CartContext";
+import {
+  CartContext,
+  PaymentContext,
+} from "context/CartAndPaymentContext";
 
 const CartContainer = ({ shippingPrice }) => {
   const [itemsPrice, setItemsPrice] = useState(0);
@@ -10,7 +13,7 @@ const CartContainer = ({ shippingPrice }) => {
   const cartData = useContext(CartContext);
 
   const { orderConfirmed, paymentData } = useContext(PaymentContext);
-  const {  name, cardNumber, expiration, cvv } = paymentData;
+  const { name, cardNumber, expiration, cvv } = paymentData;
 
   useEffect(() => {
     setItemsPrice(

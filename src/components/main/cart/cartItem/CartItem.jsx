@@ -2,7 +2,7 @@ import { ReactComponent as MinusIcon } from "assets/icons/minus.svg";
 import { ReactComponent as PlusIcon } from "assets/icons/plus.svg";
 import styles from "./CartItem.module.scss";
 import { useContext, useState } from "react";
-import { PaymentContext } from "../CartContext";
+import { PaymentContext } from "../../../../context/CartAndPaymentContext";
 
 const CartItem = ({ name, img, price, quantity, recalculateTotal }) => {
   const { setOrderConfirmed } = useContext(PaymentContext);
